@@ -1,0 +1,26 @@
+[
+  {
+    "id": "i1",
+    "name": "Algorithm Book",
+    "image": "/items/book.png",
+    "topic": "DSA"
+  },
+  {
+    "id": "i2",
+    "name": "Desk Plant",
+    "image": "/items/plant.png",
+    "topic": "Environment"
+  },
+  {
+    "id": "i4",
+    "name": "Desk Lamp",
+    "image": "/items/lamp.png",
+    "topic": "Energy"
+  },
+  {
+    "id": "i8",
+    "name": "Poster Poster",
+    "image": "/items/poster.png",
+    "topic": "Art"
+  }
+]
