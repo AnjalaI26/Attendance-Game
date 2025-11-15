@@ -1,0 +1,19 @@
+[
+  {
+    "id": "s1",
+    "code": "TEST01",
+    "topic": "CS",
+    "professorId": "u2",
+    "startTime": "2025-01-01T00:00:00Z",
+    "endTime": "2030-12-31T23:59:59Z",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is the professor's favorite animal?",
+        "options": ["squirrel", "panda", "cat"],
+        "correct": 0
+      }
+    ],
+    "rewards": ["i2"]
+  }
+]
