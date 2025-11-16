@@ -53,21 +53,26 @@ export default function StudentDashboard({ user: propUser, setUser: propSetUser 
     }
   };
 
-  const handleAnswerSubmit = async () => {
+   const handleAnswerSubmit = async () => {
     const correct = selectedAnswer === currentQuestion.correct;
     setIsCorrect(correct);
     setShowResult(true);
     
     if (correct) {
-      // Update user's desk to show lamp
-      const updatedUser = { ...user, home: 'lamp.png', points: user.points + 10 };
+      // Determine next desk item based on current state
+      let newDeskItem = 'lamp.png';
+      if (user.home === 'lamp.png') {
+        newDeskItem = 'plant.png';
+      }
+      
+      const updatedUser = { ...user, home: newDeskItem, points: user.points + 10 };
       setUser(updatedUser);
       
       // In real app, make API call to update user
       // fetch(`http://localhost:5000/api/users/${user._id}`, {
       //   method: 'PUT',
       //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ home: 'lamp.png', points: updatedUser.points })
+      //   body: JSON.stringify({ home: newDeskItem, points: updatedUser.points })
       // });
     }
   };
@@ -452,7 +457,7 @@ export default function StudentDashboard({ user: propUser, setUser: propSetUser 
                         ...styles.result,
                         ...(isCorrect ? styles.correctResult : styles.incorrectResult)
                       }}>
-                        {isCorrect ? '🎉 Correct! You earned a lamp for your desk!' : '❌ Incorrect. Try again!'}
+                        {isCorrect ? '🎉 Correct! You earned a decoration for your desk!' : '❌ Incorrect. Try again!'}
                       </div>
                       <button 
                         onClick={() => {
