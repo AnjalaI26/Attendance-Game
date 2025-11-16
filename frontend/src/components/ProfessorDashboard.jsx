@@ -51,6 +51,35 @@ export default function ProfessorDashboard({ user, setUser, navigate }) {
   };
 
   const handleCreateSet = () => {
+    // Validation
+    if (!newSet.code.trim()) {
+      alert('Please enter a quiz code');
+      return;
+    }
+    if (!newSet.topic.trim()) {
+      alert('Please enter a topic');
+      return;
+    }
+    if (!newSet.startTime || !newSet.endTime) {
+      alert('Please select start and end dates');
+      return;
+    }
+    
+    // Check if all questions have text and options filled
+    for (let i = 0; i < newSet.questions.length; i++) {
+      const q = newSet.questions[i];
+      if (!q.text.trim()) {
+        alert(`Question ${i + 1} needs text`);
+        return;
+      }
+      for (let j = 0; j < q.options.length; j++) {
+        if (!q.options[j].trim()) {
+          alert(`Question ${i + 1}, Option ${j + 1} cannot be empty`);
+          return;
+        }
+      }
+    }
+
     const set = {
       id: `s${Date.now()}`,
       code: newSet.code.toUpperCase(),
@@ -379,7 +408,8 @@ export default function ProfessorDashboard({ user, setUser, navigate }) {
       border: '2px solid #e5e7eb',
       fontSize: '14px',
       boxSizing: 'border-box',
-      color: '#1f2937'
+      color: '#1f2937',
+      background: 'white'
     },
     questionCard: {
       background: '#f9fafb',
